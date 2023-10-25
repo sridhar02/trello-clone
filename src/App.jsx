@@ -1,12 +1,33 @@
-import { useState } from "react";
+import { useRoutes, Outlet } from "react-router-dom";
 import "./App.css";
+import { Login } from "./Components/Login";
+import { Signup } from "./Components/Signup";
 
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl  bg-violet-600 p-4 text-white">Hello world!</h1>
-    </>
-  );
+  const Games = () => {
+    return (
+      <div className="Games">
+        <div>This is the Games page</div>
+        <Outlet />
+      </div>
+    );
+  };
+
+  const routes = useRoutes([
+    {
+      path: "/",
+      element: <div>Hello Index</div>,
+    },
+    {
+      path: "login",
+      element: <Login />,
+    },
+    {
+      path: "signup",
+      element: <Signup />,
+    },
+  ]);
+  return routes;
 }
 
 export default App;
