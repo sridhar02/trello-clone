@@ -37,7 +37,21 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- Login
+
+![App Screenshot](./screen-shot1.png)
+
+- Signup
+
+![App Screenshot](./screen-shot2.png)
+
+- Dashboard
+
+![App Screenshot](./screen-shot3.png)
+
+- Project
+
+![App Screenshot](./screen-shot4.png)
 
 
 ## Deployment
