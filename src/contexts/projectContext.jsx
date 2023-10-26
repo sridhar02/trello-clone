@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import React, { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const ProjectContext = createContext();
 
@@ -92,12 +92,6 @@ export const ProjectProvider = ({ children }) => {
     });
   };
 
-  //   const getProject = (projectId) => {
-  //     dispatch({
-  //       type: "GET_PROJECT",
-  //       payload: { projectId },
-  //     });
-  //   };
   const getProject = (projectId) => {
     const project = state.projects.find((project) => project.id === projectId);
     if (project) {

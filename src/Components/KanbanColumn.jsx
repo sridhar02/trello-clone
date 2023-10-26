@@ -4,7 +4,7 @@ import { useDroppable } from "@dnd-kit/core";
 
 import { Card } from "./Card";
 
-export const KanbanLane = (props) => {
+export const KanbanColumn = (props) => {
   const { column, columns, setColumns } = props;
   const { title, items, id } = column;
 
@@ -75,10 +75,10 @@ export const KanbanLane = (props) => {
                 value={addRow}
                 onChange={(e) => setAddRow(e.target.value)}
               />
-              <button className="bg-blue-500 p-2 px-4 mt-2" onClick={handleRow}>
+              <button className="bg-blue-500 p-2 px-8 mt-2 rounded-sm mr-4" onClick={handleRow}>
                 Add
               </button>
-              <button onClick={() => setShowRowItem(false)}>x</button>
+              <button onClick={() => setShowRowItem(false)}>cancel</button>
             </div>
           )}
         </div>

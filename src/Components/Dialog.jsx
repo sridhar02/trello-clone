@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Dialog = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
 

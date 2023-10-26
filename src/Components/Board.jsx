@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { DndContext, rectIntersection } from "@dnd-kit/core";
-import { KanbanLane } from "./KanbanLane";
+import { KanbanColumn } from "./KanbanColumn";
 import { nanoid } from "nanoid";
 
 export const Board = () => {
+
+
   const [columns, setColumns] = useState([
-    { id: "", title: "Todo", items: [] },
+    { id: "15dfbbb8-9468-4929-8e10-27d024109e14", title: "Todo", items: [] },
+    { id: "61873849-a418-41e7-8518-ae15b5f7e2ba", title: "In Progress", items: [] }
   ]);
 
   const [showAddCol, setShowAddCol] = useState(false);
@@ -26,8 +29,6 @@ export const Board = () => {
 
   const handleDrag = (e) => {
     const container = e.over?.id;
-    const title = e.active.data.current?.title ?? "";
-    const index = e.active.data.current?.index ?? 0;
     const id = e.active.data.current?.id ?? 0;
     const item = e.active.data.current?.item ?? 0;
     const parent = e.active.data.current?.parent ?? "ToDo";
@@ -57,8 +58,8 @@ export const Board = () => {
   return (
     <DndContext collisionDetection={rectIntersection} onDragEnd={handleDrag}>
       <div className="flex flex-row items-start mt-2 justify-start">
-        {columns.map((col, key) => (
-          <KanbanLane
+        {columns.map((col) => (
+          <KanbanColumn
             key={col.id}
             column={col}
             columns={columns}

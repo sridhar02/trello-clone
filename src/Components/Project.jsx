@@ -11,11 +11,9 @@ export const Project = () => {
     getProject(id);
   }, [id]);
 
-  console.log(currentProject, id);
-
   return (
     <div className="flex justify-start items-start w-full h-full">
-      {currentProject && (
+      {currentProject ? (
         <div className="flex flex-col gap-4 mt-4 p-2 ml-4 w-full h-full">
           <h1 className="text-2xl font-bold">{currentProject.title}</h1>
           <p>{currentProject.description}</p>
@@ -24,6 +22,8 @@ export const Project = () => {
             <Board currentProject={currentProject} />
           </div>
         </div>
+      ) : (
+        <h1>Data is persisted if you refresh accidentally click on the Navbar name Trello Clone to take you to the dashboard </h1>
       )}
     </div>
   );
