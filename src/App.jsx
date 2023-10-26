@@ -21,6 +21,10 @@ function App() {
           element: <Navigate to="/dashboard" />,
         },
         {
+          path: "*",
+          element: <Navigate to="/dashboard" />,
+        },
+        {
           path: "login",
           element: <Login />,
         },
