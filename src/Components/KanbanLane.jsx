@@ -41,7 +41,7 @@ export const KanbanLane = (props) => {
   };
 
   return (
-    <div className="flex p-5 flex-col min-h-10">
+    <div className="flex p-5 pl-0 flex-col min-h-10">
       <div className="flex justify-between">
         <div className="font-bold">{title}</div>
       </div>

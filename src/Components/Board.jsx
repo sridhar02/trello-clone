@@ -56,7 +56,7 @@ export const Board = () => {
 
   return (
     <DndContext collisionDetection={rectIntersection} onDragEnd={handleDrag}>
-      <div className="flex flex-row items-start mt-10 justify-start">
+      <div className="flex flex-row items-start mt-2 justify-start">
         {columns.map((col, key) => (
           <KanbanLane
             key={col.id}

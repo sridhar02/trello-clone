@@ -1,14 +1,27 @@
 import { useState } from "react";
+import { useAuth } from "../contexts/authContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (login(email, password)) {
+      navigate("/");
+    } else {
+      alert("Invalid email or password");
+    }
+  };
 
   return (
     <div className="w-screen h-screen bg-gray-200 ">
       <form
         className="w-full flex flex-col gap-8 justify-center items-center h-full"
-        action=""
+        onSubmit={handleSubmit}
       >
         <h1 className="text-4xl">Login</h1>
         <div className="flex flex-col gap-2 w-1/4">
@@ -19,9 +32,9 @@ export const Login = () => {
             name="email"
             type="email"
             placeholder="Email"
-            value={emailAddress}
+            value={email}
             required
-            onChange={(e) => setEmailAddress(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2 w-1/4">

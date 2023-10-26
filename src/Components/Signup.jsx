@@ -1,13 +1,22 @@
 import { useState } from "react";
+import { useAuth } from "../contexts/authContext";
+import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { signup } = useAuth();
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted", { name, email, password });
+    if (signup(name, email, password)) {
+      navigate("/login");
+    } else {
+      alert("User already exists");
+    }
     clear();
   };
 
