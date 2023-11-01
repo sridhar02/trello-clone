@@ -1,13 +1,24 @@
 import React from "react";
-import { useAuth } from "../contexts/authContext";
-import { Navigate } from "react-router-dom";
+
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+  RedirectToSignIn,
+  ClerkProvider,
+} from "@clerk/clerk-react";
 
 export const PrivateRoute = ({ children }) => {
-  const { user } = useAuth();
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
+  return (
+    <>
+      <SignedIn >
+        {children}
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
+  );
 };

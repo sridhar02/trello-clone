@@ -1,5 +1,16 @@
 import { useRoutes, Outlet, Navigate } from "react-router-dom";
 import "./App.css";
+import {
+  SignIn,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+  RedirectToSignIn,
+  ClerkProvider,
+} from "@clerk/clerk-react";
+
+
 import { Login } from "./Components/Login";
 import { Signup } from "./Components/Signup";
 import { Dashboard } from "./Components/Dashboard";
@@ -9,6 +20,9 @@ import { Navbar } from "./Components/Navbar";
 import { AuthProvider } from "./contexts/authContext";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import { ProjectProvider } from "./contexts/projectContext";
+
+const clerkPubKey = import.meta.env.VITE_APP_CLERK_PUBLISHABLE_KEY;
+
 
 function App() {
   const routes = useRoutes([
@@ -25,21 +39,13 @@ function App() {
           element: <Navigate to="/dashboard" />,
         },
         {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "signup",
-          element: <Signup />,
-        },
-        {
           path: "/project/:id",
           element: (
-            <PrivateRoute>
+            <>
               <ProjectProvider>
                 <Project />
               </ProjectProvider>
-            </PrivateRoute>
+            </>
           ),
         },
         {
@@ -54,8 +60,16 @@ function App() {
         },
       ],
     },
+    {
+      path: "login",
+      element: <SignIn />,
+    },
   ]);
-  return <AuthProvider>{routes}</AuthProvider>;
+  return (
+    <ClerkProvider publishableKey={clerkPubKey}>
+      {routes}
+    </ClerkProvider>
+  );
 }
 
 function NavbarWrapper() {
