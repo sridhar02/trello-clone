@@ -6,7 +6,6 @@ import {
   UserButton,
   useUser,
   RedirectToSignIn,
-  ClerkProvider,
 } from "@clerk/clerk-react";
 
 export const PrivateRoute = ({ children }) => {

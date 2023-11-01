@@ -59,7 +59,7 @@ function App() {
     },
     {
       path: "login",
-      element: <SignIn />,
+      element: <div className="flex items-center justify-center mt-20"> <SignIn /></div>,
     },
   ]);
   return (
