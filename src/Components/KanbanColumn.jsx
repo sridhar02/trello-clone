@@ -32,7 +32,8 @@ export const KanbanColumn = (props) => {
             },
           ],
         };
-      } else return col;
+      }
+      return col;
     });
 
     setColumns([...updatedColumns]);
@@ -75,7 +76,10 @@ export const KanbanColumn = (props) => {
                 value={addRow}
                 onChange={(e) => setAddRow(e.target.value)}
               />
-              <button className="bg-blue-500 p-2 px-8 mt-2 rounded-sm mr-4" onClick={handleRow}>
+              <button
+                className="bg-blue-500 p-2 px-8 mt-2 rounded-sm mr-4"
+                onClick={handleRow}
+              >
                 Add
               </button>
               <button onClick={() => setShowRowItem(false)}>cancel</button>

@@ -1,21 +1,16 @@
 import { useDraggable } from "@dnd-kit/core";
-import { CSS } from "@dnd-kit/utilities";
-
 
 export const Card = ({ item, index, parent }) => {
-  const { title, id } = item;
-
+  const { title, id: itemId } = item;
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: id,
-    data: { title, index, parent, id, item },
+    itemId,
+    data: { title, index, parent, itemId, item },
   });
 
   const style = {
     transform: CSS.Translate.toString(transform),
   };
-
-
 
   return (
     <div
@@ -25,11 +20,7 @@ export const Card = ({ item, index, parent }) => {
       {...attributes}
       {...listeners}
     >
-      <div className="" >
-        {title}
-      </div>
-
-    </div >
-
+      <div className="">{title}</div>
+    </div>
   );
 };

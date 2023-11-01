@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { DndContext, rectIntersection } from "@dnd-kit/core";
-import { KanbanColumn } from "./KanbanColumn";
 import { nanoid } from "nanoid";
+import { DndContext, rectIntersection } from "@dnd-kit/core";
+
+import { KanbanColumn } from "./KanbanColumn";
 
 export const Board = () => {
-
-
   const [columns, setColumns] = useState([
     { id: "15dfbbb8-9468-4929-8e10-27d024109e14", title: "Todo", items: [] },
-    { id: "61873849-a418-41e7-8518-ae15b5f7e2ba", title: "In Progress", items: [] }
+    {
+      id: "61873849-a418-41e7-8518-ae15b5f7e2ba",
+      title: "In Progress",
+      items: [],
+    },
   ]);
 
   const [showAddCol, setShowAddCol] = useState(false);
@@ -38,7 +41,7 @@ export const Board = () => {
         if (col.title === parent) {
           return {
             ...col,
-            items: col.items.filter((item) => item.id !== id),
+            items: col.items.filter((colItem) => colItem.id !== id),
           };
         }
 

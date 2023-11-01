@@ -1,14 +1,15 @@
 import { useRoutes, Outlet, Navigate } from "react-router-dom";
 import "./App.css";
-import { Login } from "./Components/Login";
-import { Signup } from "./Components/Signup";
+import { SignIn, ClerkProvider } from "@clerk/clerk-react";
+
 import { Dashboard } from "./Components/Dashboard";
 import { Project } from "./Components/Project";
 import { Navbar } from "./Components/Navbar";
 
-import { AuthProvider } from "./contexts/authContext";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import { ProjectProvider } from "./contexts/projectContext";
+
+const clerkPubKey = import.meta.env.VITE_APP_CLERK_PUBLISHABLE_KEY;
 
 function App() {
   const routes = useRoutes([
@@ -25,21 +26,11 @@ function App() {
           element: <Navigate to="/dashboard" />,
         },
         {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "signup",
-          element: <Signup />,
-        },
-        {
           path: "/project/:id",
           element: (
-            <PrivateRoute>
-              <ProjectProvider>
-                <Project />
-              </ProjectProvider>
-            </PrivateRoute>
+            <ProjectProvider>
+              <Project />
+            </ProjectProvider>
           ),
         },
         {
@@ -54,8 +45,17 @@ function App() {
         },
       ],
     },
+    {
+      path: "login",
+      element: (
+        <div className="flex items-center justify-center mt-20">
+          {" "}
+          <SignIn />
+        </div>
+      ),
+    },
   ]);
-  return <AuthProvider>{routes}</AuthProvider>;
+  return <ClerkProvider publishableKey={clerkPubKey}>{routes}</ClerkProvider>;
 }
 
 function NavbarWrapper() {
