@@ -11,13 +11,10 @@ import {
 } from "@clerk/clerk-react";
 
 
-import { Login } from "./Components/Login";
-import { Signup } from "./Components/Signup";
 import { Dashboard } from "./Components/Dashboard";
 import { Project } from "./Components/Project";
 import { Navbar } from "./Components/Navbar";
 
-import { AuthProvider } from "./contexts/authContext";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import { ProjectProvider } from "./contexts/projectContext";
 
