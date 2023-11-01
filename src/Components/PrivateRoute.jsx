@@ -1,23 +1,10 @@
-import React from "react";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 
-import {
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-  RedirectToSignIn,
-} from "@clerk/clerk-react";
-
-export const PrivateRoute = ({ children }) => {
-
-  return (
-    <>
-      <SignedIn >
-        {children}
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
-    </>
-  );
-};
+export const PrivateRoute = ({ children }) => (
+  <>
+    <SignedIn>{children}</SignedIn>
+    <SignedOut>
+      <RedirectToSignIn />
+    </SignedOut>
+  </>
+);

@@ -1,11 +1,9 @@
-import { SignOutButton, useAuth, } from "@clerk/clerk-react";
-import React from "react";
+import { SignOutButton, useAuth } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const { userId } = useAuth();
   const navigate = useNavigate();
-
 
   return (
     <div className="bg-blue-600 flex flex-row justify-around text-white p-4">
@@ -21,9 +19,11 @@ export const Navbar = () => {
         ) : (
           <>
             {/* <button onClick={logout}>Logout</button> */}
-            <SignOutButton signOutCallback={() => {
-              navigate("/login")
-            }} />
+            <SignOutButton
+              signOutCallback={() => {
+                navigate("/login");
+              }}
+            />
           </>
         )}
       </div>

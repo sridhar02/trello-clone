@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { Board } from "./Board";
 import { useParams } from "react-router-dom";
+
+import { Board } from "./Board";
 import { useProjects } from "../contexts/projectContext";
 
 export const Project = () => {
@@ -23,7 +24,10 @@ export const Project = () => {
           </div>
         </div>
       ) : (
-        <h1>Data is persisted if you refresh accidentally click on the Navbar name Trello Clone to take you to the dashboard </h1>
+        <h1>
+          Data is persisted if you refresh accidentally click on the Navbar name
+          Trello Clone to take you to the dashboard{" "}
+        </h1>
       )}
     </div>
   );

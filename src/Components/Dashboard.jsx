@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ProjectCard } from "./ProjectCard";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
 
 import { Dialog } from "./Dialog";
+import { ProjectCard } from "./ProjectCard";
 import { useProjects } from "../contexts/projectContext";
 
 export const Dashboard = () => {
